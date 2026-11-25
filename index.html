@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#141415">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Beam for JBL Live Beam 4</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <script type="module" crossorigin src="./assets/index-B29-F1Ma.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-aXPTDBy8.css">
+</head>
+<body>
+<div id="app">
+  <aside class="side">
+    <div class="brand"><img src="./icon.svg" alt="" width="28" height="28"><b>Beam</b></div>
+    <nav id="tabs" aria-label="Sections">
+      <button data-tab="overview" class="on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><span>Overview</span></button>
+      <button data-tab="history"><svg viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg><span>History</span></button>
+      <button data-tab="settings"><svg viewBox="0 0 24 24"><path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4"/></svg><span>Settings</span></button>
+      <button data-tab="about"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>About</span></button>
+    </nav>
+    <p class="side-foot">For JBL Live Beam 4</p>
+  </aside>
+
+  <div class="content">
+    <header class="bar">
+      <div class="brand m-only"><img src="./icon.svg" alt="" width="28" height="28"><b>Beam</b></div>
+      <h1 id="title">Overview</h1>
+      <div id="pill" class="status" data-kind="idle"><i></i><span>Not connected</span></div>
+    </header>
+
+    <main>
+      <section id="view-overview" class="view on">
+        <div id="connect-card" class="card connect">
+          <h2>Connect</h2>
+          <p id="connect-msg">Open the case or put a bud in your ear, then connect. Beam talks to the buds over Bluetooth.</p>
+          <div class="row"><button id="btn-connect" class="primary">Connect to my buds</button><button id="btn-demo" class="quiet">Demo</button></div>
+          <p id="support-note" class="note" hidden></p>
+        </div>
+
+        <div class="col">
+          <div class="card" id="battery-card">
+            <h2>Battery</h2>
+            <div class="gauges">
+              <div class="gauge" data-k="L"></div>
+              <div class="gauge" data-k="R"></div>
+              <div class="gauge" data-k="C"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2>Noise control</h2><span class="soon">Control coming soon</span></div>
+            <div class="seg ro" id="chips"><span>ANC</span><span>Ambient</span><span>Talk-through</span><span>Off</span></div>
+            <p id="mode-text" class="note">Waiting for the buds</p>
+          </div>
+          <div class="card">
+            <h2>Device</h2>
+            <dl id="info"></dl>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <h2>Case screen</h2>
+            <div id="preview" class="preview"></div>
+            <div class="field"><label for="bright">Brightness</label><output id="bright-val">–</output></div>
+            <input id="bright" type="range" min="1" max="100" value="1">
+            <div class="row two">
+              <button id="btn-clock" class="primary">Sync clock</button>
+              <button id="btn-find">Find my case</button>
+            </div>
+          </div>
+          <div class="card">
+            <h2>Quick access</h2>
+            <ul id="order" class="order"></ul>
+            <p class="note">Drag to reorder. The case updates immediately</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-history" class="view">
+        <div class="card">
+          <div class="card-head wrap"><h2>Battery history</h2>
+            <div class="seg" id="range"><button data-r="86400" class="on">24 hours</button><button data-r="604800">7 days</button></div>
+          </div>
+          <div id="legend" class="legend"></div>
+          <div id="chart" class="chart"></div>
+          <p class="note">Thicker stretches are charging. Touch or hover the chart for exact values</p>
+        </div>
+        <div class="stats" id="stats"></div>
+      </section>
+
+      <section id="view-settings" class="view">
+        <div class="card">
+          <h2>Notifications</h2>
+          <div id="toggles"></div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <h2>Data</h2>
+            <p class="note">Battery history is kept in this browser only. Nothing is sent anywhere</p>
+            <div class="row two"><button id="btn-export">Export history</button><button id="btn-clear">Clear history</button></div>
+          </div>
+          <div class="card">
+            <h2>Connection</h2>
+            <div class="row two"><button id="btn-reconnect">Reconnect</button><button id="btn-disconnect">Disconnect</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-about" class="view">
+        <div class="card about">
+          <img src="./icon.svg" alt="" width="48" height="48">
+          <h2 class="name">Beam</h2>
+          <p class="note mono">Version <span id="ver"></span></p>
+          <p class="byline">Made by Morgan Harris</p>
+          <p>A web app for JBL Live Beam 4 earbuds and their touchscreen case. It shows the battery of each bud and the case, and controls the case screen, without JBL's phone app.</p>
+          <p class="note">Not affiliated with JBL or Harman. It never sends firmware, update, reset or power-off commands.</p>
+        </div>
+        <div class="card story">
+          <h2>How it was worked out</h2>
+          <h3>The buds speak a private language</h3>
+          <p>JBL doesn't publish how the Live Beam 4 talks over Bluetooth. Other JBL earbuds use one dialect, but this model ignored it completely.</p>
+          <h3>Protocol 4, and a two-byte header</h3>
+          <p>The Beam 4 uses a newer dialect called Protocol 4. Every message starts with the two bytes <code>00 DD</code>, then says what it wants (read, set, or news) and which feature. Use a slightly wrong header and the buds simply hang up.</p>
+          <h3>Asking, then decoding</h3>
+          <p>Beam asks things like "what's your battery?" and "set the case brightness to 40", and decodes the answers: which byte is the percentage, which bit means charging. Each control was checked by reading the value back.</p>
+          <h3>Still to crack</h3>
+          <p>Switching noise cancelling, and putting your own picture on the case screen. The buds accept those messages but nothing changes yet, so they stay off until the real format is captured from JBL's app.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="toast" role="status"></div>
+</div>
+</body>
+</html>
